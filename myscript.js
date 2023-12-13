@@ -1,48 +1,43 @@
 const getComputerChoice = () => {
-  rockPaperScissors = ["rock", "paper", "scissors"];
+  const rockPaperScissors = ["rock", "paper", "scissors"];
   return (computerSelection =
     rockPaperScissors[Math.floor(Math.random() * rockPaperScissors.length)]);
 };
 
-var playerScore = 0;
-var computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
+
+const ROCK = "rock";
+const PAPER = "paper";
+const SCISSORS = "scissors";
 
 const playRound = () => {
-  var oponentSelection = getComputerChoice();
-  var playerSelection = window.prompt("Choose: rock, paper or scissors");
+  const oponentSelection = getComputerChoice();
+  const playerSelection = window.prompt("Choose: rock, paper or scissors");
+
   if (oponentSelection === playerSelection) {
     console.log("It's a draw");
   } else if (
-    (oponentSelection === "rock" && playerSelection === "scissors") ||
-    (oponentSelection === "scissors" && playerSelection === "paper") ||
-    (oponentSelection === "paper" && playerSelection === "rock")
+    (oponentSelection === ROCK && playerSelection === SCISSORS) ||
+    (oponentSelection === SCISSORS && playerSelection === PAPER) ||
+    (oponentSelection === PAPER && playerSelection === ROCK)
   ) {
     computerSelection++;
     console.log("Computer wins this round");
-    return oponentSelection;
   } else {
     playerScore++;
     console.log("You win this round");
-    return playerSelection;
   }
 };
 
-const game = () => {
+const playGame = () => {
   for (let start = 0; start < 5; start++) {
     playRound();
-    // if (playerScore > computerScore) {
-    //   console.log("You won!");
-    // } else if (playerScore < computerScore) {
-    //   console.log("Computer won!");
-    // } else {
-    //   console.log("It's a draw");
-    // }
-    // console.log("Computer chosen:", oponentSelection);
-    // console.log("You chosen:", playerSelection);
   }
 };
 
-console.log(game());
+playGame();
+
 if (playerScore > computerScore) {
   console.log("You won the game!");
 } else if (playerScore < computerScore) {
@@ -50,5 +45,6 @@ if (playerScore > computerScore) {
 } else {
   console.log("It's a draw, neither of you won!");
 }
+
 console.log("Computer score:", computerScore);
 console.log("You score:", playerScore);
